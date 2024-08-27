@@ -4,7 +4,7 @@ import {
   ConversationsListComponent,
   TokenService,
 } from '../../../twilio-conversations-ui/src/public-api';
-import { HttpClientModule } from '@angular/common/http';
+import { TwilioConversationsService } from '../../../twilio-conversations-ui/src/lib/services/twilio-conversations.service';
 
 @Component({
   selector: 'app-root',
@@ -16,20 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'twilio-conversations-ui-app';
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private twilioConversationsService: TwilioConversationsService) {}
 
   ngOnInit(): void {
-    this.tokenService
-      .getToken(
-        'https://twilio-conversations-ui-7846.twil.io/token?identity=Sergio'
-      )
-      .subscribe({
-        next: (response) => {
-          console.log(response.token);
-        },
-        error: (error) => {
-          console.error(error);
-        },
-      });
+    this.twilioConversationsService.initializeClient(
+      'https://twilio-conversations-ui-7846.twil.io/token?identity=Sergio'
+    );
   }
 }
