@@ -9,16 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ConversationsListComponent, HttpClientModule],
+  imports: [RouterOutlet, ConversationsListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'twilio-conversations-ui-app';
 
-  constructor() {}
+  constructor(private tokenService: TokenService) {}
 
-  /*   constructor(private tokenService: TokenService) {}
   ngOnInit(): void {
     this.tokenService
       .getToken(
@@ -26,11 +25,11 @@ export class AppComponent {
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
+          console.log(response.token);
         },
         error: (error) => {
           console.error(error);
         },
       });
-  } */
+  }
 }
