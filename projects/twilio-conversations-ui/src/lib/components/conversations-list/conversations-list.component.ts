@@ -38,7 +38,7 @@ export class ConversationsListComponent implements OnInit {
   }
 
   selectConversation(conversation: Conversation): void {
-    console.log('Selected conversation:', conversation);
+    console.log('Selected conversation:', conversation.sid);
     this.twilioConversationsService.setActiveConversation(conversation);
   }
 }
