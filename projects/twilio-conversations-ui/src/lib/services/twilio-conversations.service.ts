@@ -5,6 +5,7 @@ import {
   Client as ConversationsClient,
   Conversation,
   Paginator,
+  Participant,
 } from '@twilio/conversations';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class TwilioConversationsService {
   private conversationsReady: BehaviorSubject<Paginator<Conversation> | null> =
     new BehaviorSubject<Paginator<Conversation> | null>(null);
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService) { }
 
   async initializeClient(tokenUrl: string): Promise<void> {
     this.tokenService.getToken(tokenUrl).subscribe({
@@ -34,9 +35,34 @@ export class TwilioConversationsService {
         console.error(error);
       },
     });
+
   }
 
   getSubscribedConversations(): Observable<Paginator<Conversation> | null> {
     return this.conversationsReady.asObservable();
+  }
+
+  getConversationName(conversation: Conversation): string {
+    if (conversation.friendlyName != null) {
+      return conversation.friendlyName;
+    }
+
+    const participants: Map<string, Participant> = conversation._participants;
+
+    let identitiesString = '';
+
+    participants.forEach((participant: Participant) => {
+      if (participant.identity) {
+        identitiesString += `${participant.identity}, `;
+      } else {
+        identitiesString += `${participant.bindings}, `;
+      }
+    });
+
+    if (identitiesString.length > 0) {
+      identitiesString = identitiesString.slice(0, -2);
+    }
+
+    return identitiesString;
   }
 }

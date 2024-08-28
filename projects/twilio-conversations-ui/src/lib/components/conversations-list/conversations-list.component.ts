@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TwilioConversationsService } from '../../services/twilio-conversations.service';
 import { Conversation } from '@twilio/conversations';
@@ -5,12 +6,12 @@ import { Conversation } from '@twilio/conversations';
 @Component({
   selector: 'lib-conversations-list',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './conversations-list.component.html',
   styleUrl: './conversations-list.component.scss'
 })
 export class ConversationsListComponent implements OnInit {
-  conversations: Conversation[] = [];
+  conversationsString: string[] = [];
 
   constructor(private twilioConversationsService: TwilioConversationsService) { }
 
@@ -18,9 +19,13 @@ export class ConversationsListComponent implements OnInit {
     this.twilioConversationsService.getSubscribedConversations().subscribe({
       next: (paginator) => {
         if (paginator) {
-          this.conversations = paginator.items;
-          // Update the UI with the fetched conversations
-          console.log(this.conversations);
+          var conversations: Conversation[] = paginator.items;
+
+          for (var conversation of conversations) {
+
+            this.conversationsString.push(this.twilioConversationsService.getConversationName(conversation));
+          }
+
         }
       },
       error: (error) => {
@@ -28,5 +33,9 @@ export class ConversationsListComponent implements OnInit {
         // Handle the error, possibly by showing an error message in the UI
       },
     });
+
+
   }
+
+
 }
