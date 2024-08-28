@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {
   ConversationsListComponent,
-  TokenService,
+  ConversationComponent,
 } from '../../../twilio-conversations-ui/src/public-api';
 import { TwilioConversationsService } from '../../../twilio-conversations-ui/src/lib/services/twilio-conversations.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ConversationsListComponent],
+  imports: [RouterOutlet, ConversationsListComponent, ConversationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

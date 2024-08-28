@@ -8,12 +8,12 @@ import { Conversation } from '@twilio/conversations';
   standalone: true,
   imports: [NgFor],
   templateUrl: './conversations-list.component.html',
-  styleUrl: './conversations-list.component.scss'
+  styleUrl: './conversations-list.component.scss',
 })
 export class ConversationsListComponent implements OnInit {
   conversationsString: string[] = [];
 
-  constructor(private twilioConversationsService: TwilioConversationsService) { }
+  constructor(private twilioConversationsService: TwilioConversationsService) {}
 
   ngOnInit(): void {
     this.twilioConversationsService.getSubscribedConversations().subscribe({
@@ -22,10 +22,10 @@ export class ConversationsListComponent implements OnInit {
           var conversations: Conversation[] = paginator.items;
 
           for (var conversation of conversations) {
-
-            this.conversationsString.push(this.twilioConversationsService.getConversationName(conversation));
+            this.conversationsString.push(
+              this.twilioConversationsService.getConversationName(conversation)
+            );
           }
-
         }
       },
       error: (error) => {
@@ -33,9 +33,10 @@ export class ConversationsListComponent implements OnInit {
         // Handle the error, possibly by showing an error message in the UI
       },
     });
-
-
   }
 
-
+  selectConversation(conversation: Conversation): void {
+    console.log('Selected conversation:', conversation);
+    this.twilioConversationsService.setActiveConversation(conversation);
+  }
 }
