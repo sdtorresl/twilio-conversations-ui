@@ -2,16 +2,18 @@ import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TwilioConversationsService } from '../../services/twilio-conversations.service';
 import { Conversation } from '@twilio/conversations';
+import { ConversationUi } from '../../models/conversation-ui.model';
+import { DateFormatPipe } from '../../pipes/date-format.pipe';
 
 @Component({
   selector: 'lib-conversations-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, DateFormatPipe],
   templateUrl: './conversations-list.component.html',
   styleUrl: './conversations-list.component.scss'
 })
 export class ConversationsListComponent implements OnInit {
-  conversationsString: string[] = [];
+  conversationsString: ConversationUi[] = [];
 
   constructor(private twilioConversationsService: TwilioConversationsService) { }
 
@@ -22,8 +24,9 @@ export class ConversationsListComponent implements OnInit {
           var conversations: Conversation[] = paginator.items;
 
           for (var conversation of conversations) {
+            var conversationUi = new ConversationUi(conversation);
 
-            this.conversationsString.push(this.twilioConversationsService.getConversationName(conversation));
+            this.conversationsString.push(conversationUi);
           }
 
         }
