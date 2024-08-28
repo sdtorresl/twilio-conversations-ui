@@ -32,4 +32,12 @@ export class ConversationUi {
 
         return identitiesString;
     }
+
+    get displayLastMessage(): string {
+        // TODO: get last message
+        const lastMesasge = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, necessitatibus maiores at doloremque exercitationem pariatur itaque amet sit autem illo voluptatum nostrum, hic quae ab architecto, modi nam adipisci. Reiciendis.';
+
+
+        return lastMesasge;
+    }
 }
