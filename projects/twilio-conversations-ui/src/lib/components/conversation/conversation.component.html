@@ -1,1 +1,4 @@
-<p>conversation works!</p>
+<p>{{conversation?.sid}}</p>
+<ul *ngFor="let message of messages">
+  <li>{{message.body}}</li>
+</ul>
