@@ -7,12 +7,12 @@ import { Conversation } from '@twilio/conversations';
   standalone: true,
   imports: [],
   templateUrl: './conversations-list.component.html',
-  styleUrl: './conversations-list.component.css',
+  styleUrl: './conversations-list.component.scss'
 })
 export class ConversationsListComponent implements OnInit {
   conversations: Conversation[] = [];
 
-  constructor(private twilioConversationsService: TwilioConversationsService) {}
+  constructor(private twilioConversationsService: TwilioConversationsService) { }
 
   ngOnInit(): void {
     this.twilioConversationsService.getSubscribedConversations().subscribe({
