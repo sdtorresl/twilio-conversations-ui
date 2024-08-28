@@ -1,17 +1,17 @@
 <div class="container">
-  <div class="conversation-item" *ngFor="let conversation of conversationsString">
+  <div class="conversation-item" *ngFor="let displayConversation of conversationsString">
     <div class="conversation-img">
       <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
         alt="conversation-img">
     </div>
     <div class="conversation-info-container">
       <div class="conversation-info">
-        <div class="participant">{{conversation}}</div>
+        <div class="participant">{{displayConversation.displayName}}</div>
         <div class="last-message">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit,
           necessitatibus maiores at doloremque exercitationem pariatur itaque amet sit autem illo voluptatum
           nostrum, hic quae ab architecto, modi nam adipisci. Reiciendis.</div>
       </div>
-      <div class="conversation-date">4:00 PM</div>
+      <div class="conversation-date">{{displayConversation.conversation.dateCreated | dateFormat}}</div>
     </div>
   </div>
 </div>
