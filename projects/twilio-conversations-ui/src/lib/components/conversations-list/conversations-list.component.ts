@@ -13,7 +13,8 @@ import { DateFormatPipe } from '../../pipes/date-format.pipe';
   styleUrl: './conversations-list.component.scss',
 })
 export class ConversationsListComponent implements OnInit {
-  conversationsString: ConversationUi[] = [];
+  conversations: ConversationUi[] = [];
+  filteredConversations: ConversationUi[] = [];
 
   constructor(private twilioConversationsService: TwilioConversationsService) {}
 
@@ -26,7 +27,8 @@ export class ConversationsListComponent implements OnInit {
           for (var conversation of conversations) {
             var conversationUi = new ConversationUi(conversation);
 
-            this.conversationsString.push(conversationUi);
+            this.conversations.push(conversationUi);
+            this.filteredConversations.push(conversationUi);
           }
         }
       },
@@ -40,5 +42,12 @@ export class ConversationsListComponent implements OnInit {
   selectConversation(conversation: Conversation): void {
     console.log('Selected conversation:', conversation.sid);
     this.twilioConversationsService.setActiveConversation(conversation);
+  }
+
+  searchConversations(searchString: string): void {
+    const lowerCaseSearchString = searchString.toLowerCase();
+    this.filteredConversations = this.conversations.filter((conversationUi) =>
+      conversationUi.displayName.toLowerCase().includes(lowerCaseSearchString)
+    );
   }
 }

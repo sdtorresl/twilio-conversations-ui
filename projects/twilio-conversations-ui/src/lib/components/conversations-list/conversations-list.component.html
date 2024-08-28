@@ -1,19 +1,23 @@
+<form>
+  <input #search type="text" placeholder="Search" (input)="searchConversations(search.value!)">
+</form>
+
 <div class="container">
-    <div *ngFor="let displayConversation of conversationsString">
-        <div class="conversation-item" (click)="selectConversation(displayConversation.conversation)"
-            (keydown)="selectConversation(displayConversation.conversation)"
-            (keyup)="selectConversation(displayConversation.conversation)"
-            (keypress)="selectConversation(displayConversation.conversation)">
-            <div class="conversation-img">
-                <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
-                    alt="conversation-img">
-            </div>
-            <div class="conversation-info-container">
-                <div class="conversation-info">
-                    <div class="participant">{{displayConversation.displayName}}</div>
-                    <div class="last-message">{{displayConversation.displayLastMessage}}</div>
-                </div>
-                <div class="conversation-date">{{displayConversation.conversation.dateCreated | dateFormat}}</div>
-            </div>
+  <div *ngFor="let displayConversation of filteredConversations">
+    <div class="conversation-item" (click)="selectConversation(displayConversation.conversation)"
+      (keydown)="selectConversation(displayConversation.conversation)"
+      (keyup)="selectConversation(displayConversation.conversation)"
+      (keypress)="selectConversation(displayConversation.conversation)">
+      <div class="conversation-img">
+        <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
+          alt="conversation-img">
+      </div>
+      <div class="conversation-info-container">
+        <div class="conversation-info">
+          <div class="participant">{{displayConversation.displayName}}</div>
+          <div class="last-message">{{displayConversation.displayLastMessage}}</div>
         </div>
+        <div class="conversation-date">{{displayConversation.conversation.dateCreated | dateFormat}}</div>
+      </div>
     </div>
+  </div>
