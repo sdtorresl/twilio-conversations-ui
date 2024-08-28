@@ -6,6 +6,7 @@ import {
   Conversation,
   Paginator,
   Message,
+  Participant,
 } from '@twilio/conversations';
 
 @Injectable({
@@ -77,5 +78,29 @@ export class TwilioConversationsService {
       currentMessages.splice(index, 1);
       this.activeConversationMessages.next(currentMessages);
     });
+  }
+
+  getConversationName(conversation: Conversation): string {
+    if (conversation.friendlyName != null) {
+      return conversation.friendlyName;
+    }
+
+    const participants: Map<string, Participant> = conversation._participants;
+
+    let identitiesString = '';
+
+    participants.forEach((participant: Participant) => {
+      if (participant.identity) {
+        identitiesString += `${participant.identity}, `;
+      } else {
+        identitiesString += `${participant.bindings}, `;
+      }
+    });
+
+    if (identitiesString.length > 0) {
+      identitiesString = identitiesString.slice(0, -2);
+    }
+
+    return identitiesString;
   }
 }
