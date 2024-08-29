@@ -7,12 +7,14 @@
 }
 
 .container {
-  font-family    : "Roboto", sans-serif;
+  font-family    : $font;
   display        : flex;
   flex-direction : column;
   justify-content: space-between;
   color          : $text-color-dark;
+  position       : relative;
   height         : 100vh;
+  padding-bottom : 50px;
 
   ul {
     list-style-type : none;
@@ -109,4 +111,19 @@
     margin    : 0;
     text-align: center;
   }
+}
+
+#message-box {
+  position: absolute;
+  bottom  : 0;
+  left    : 0;
+  right   : 0;
+}
+
+button {
+  background : none;
+  padding    : 0 10px;
+  border     : none;
+  font-size  : 2rem;
+  line-height: 2rem;
 }

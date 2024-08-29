@@ -3,11 +3,12 @@ import { TwilioConversationsService } from '../../services/twilio-conversations.
 import { Conversation, Message } from '@twilio/conversations';
 import { NgFor, NgIf } from '@angular/common';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
+import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 
 @Component({
   selector: 'lib-conversation',
   standalone: true,
-  imports: [NgFor, DateFormatPipe, NgIf],
+  imports: [NgFor, DateFormatPipe, NgIf, PickerComponent],
   templateUrl: './conversation.component.html',
   styleUrl: './conversation.component.scss',
 })
@@ -46,11 +47,23 @@ export class ConversationComponent implements OnInit {
     });
   }
 
+  showEmojiPicker = false;
+
+  toggleEmojiPicker() {
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
+
+  addEmoji(event: any, inputElement: HTMLInputElement) {
+    const emoji = event.emoji.native;
+    inputElement.value += emoji;
+  }
+
   sendMessage(inputElement: HTMLInputElement): void {
     const message = inputElement.value.trim();
     if (message && this.conversation) {
       this.twilioConversationsService.sendMessage(message);
-      inputElement.value = ''; // Clear the input text
+      inputElement.value = '';
+      this.showEmojiPicker = false;
     }
   }
 }

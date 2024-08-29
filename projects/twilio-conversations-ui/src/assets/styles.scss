@@ -1,17 +1,18 @@
 @import 'variables';
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import '@ctrl/ngx-emoji-mart/picker';
 
 /* Basic Reset */
 * {
-  margin    : 0;
-  padding   : 0;
-  box-sizing: border-box;
+  margin     : 0;
+  padding    : 0;
+  box-sizing : border-box;
+  font-family: $font
 }
 
 html,
 body {
-  height     : 100%;
-  font-family: Arial, sans-serif;
+  height: 100%;
 }
 
 body {

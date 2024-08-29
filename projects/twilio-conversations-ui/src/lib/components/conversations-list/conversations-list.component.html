@@ -1,18 +1,22 @@
 <aside>
+  <div class="px-5 py-3 mb-1">
+    <h1>Conversations</h1>
+  </div>
   <form class="">
     <div class="input-container">
       <input #search type="text" id="search" placeholder="Search" (input)="searchConversations(search.value!)" />
     </div>
   </form>
 
-  <div class="container">
-    <div *ngFor="let displayConversation of filteredConversations">
-      <div class="conversation-item" (click)="selectConversation(displayConversation.conversation)"
+  <menu class="container">
+    <ul *ngFor="let displayConversation of filteredConversations">
+      <li class="conversation-item" (click)="selectConversation(displayConversation.conversation)"
         (keydown)="selectConversation(displayConversation.conversation)"
         (keyup)="selectConversation(displayConversation.conversation)"
         (keypress)="selectConversation(displayConversation.conversation)">
         <div class="conversation-img">
-          <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
+          <img
+            src='https://api.dicebear.com/9.x/initials/svg?seed={{displayConversation.displayName}}&backgroundColor=29e051,619eff,b6e3f4,c0aede,d1d4f9,ffa6e6,ffd5dc,ffdfbf'
             alt="conversation-img">
         </div>
         <div class="conversation-info-container">
@@ -22,7 +26,7 @@
           </div>
           <div class="conversation-date">{{displayConversation.conversation.dateCreated | dateFormat}}</div>
         </div>
-      </div>
-    </div>
-  </div>
+      </li>
+    </ul>
+  </menu>
 </aside>

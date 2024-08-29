@@ -1,64 +1,64 @@
 @import '../../../assets/styles.scss';
 
 .container {
-    background-color: $tertiary-color;
+  background-color: $tertiary-color;
 
-    .conversation-item {
-        display: flex;
-        flex-direction: row;
-        padding: 10px;
-        font-family: "Roboto", sans-serif;
+  .conversation-item {
+    display       : flex;
+    flex-direction: row;
+    padding       : 10px;
+    font-family   : $font;
 
-        &:hover {
-            background-color: #f5f5f5;
-            cursor: pointer;
-        }
-
-        .conversation-img {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-
-            img {
-                height: 40px;
-                width: 40px;
-                clip-path: circle(50%);
-                object-fit: cover;
-            }
-        }
-
-        .conversation-info-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 100%;
-
-            .conversation-info {
-                padding: 5px 15px;
-
-                .participant {
-                    font-weight: 500;
-                }
-
-                .last-message {
-                    font-size: 14px;
-                    color: $secondary-text-color-dark;
-                    overflow: hidden;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 1;
-                    line-clamp: 1;
-                    white-space: pre-wrap;
-                }
-            }
-
-            .conversation-date {
-                font-size: 14px;
-                color: $secondary-text-color-dark;
-                padding-top: 22px;
-                text-wrap: nowrap;
-            }
-        }
+    &:hover {
+      background-color: #f5f5f5;
+      cursor          : pointer;
     }
+
+    .conversation-img {
+      display        : flex;
+      flex-direction : column;
+      justify-content: center;
+      flex-shrink    : 0;
+
+      img {
+        height    : 40px;
+        width     : 40px;
+        clip-path : circle(50%);
+        object-fit: cover;
+      }
+    }
+
+    .conversation-info-container {
+      display        : flex;
+      flex-direction : row;
+      justify-content: space-between;
+      width          : 100%;
+
+      .conversation-info {
+        padding: 5px 15px;
+
+        .participant {
+          font-weight: 500;
+        }
+
+        .last-message {
+          font-size         : 14px;
+          color             : $secondary-text-color-dark;
+          overflow          : hidden;
+          display           : -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          line-clamp        : 1;
+          white-space       : pre-wrap;
+        }
+      }
+
+      .conversation-date {
+        font-size  : 14px;
+        color      : $secondary-text-color-dark;
+        padding-top: 22px;
+        text-wrap  : nowrap;
+      }
+    }
+  }
 }

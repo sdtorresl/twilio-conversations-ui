@@ -20,8 +20,14 @@
         </div>
       </li>
     </ul>
-    <div class="input-container">
-      <input #messageBody type="text" placeholder="" class="message-input" (keyup.enter)="sendMessage(messageBody)">
+    <div id="message-box">
+      <emoji-mart *ngIf="showEmojiPicker" (emojiClick)="addEmoji($event, messageBody)"></emoji-mart>
+      <div class="input-container">
+        <button (click)="toggleEmojiPicker()">😊</button>
+        <input #messageBody type="text" placeholder="Write a message..." class="message-input"
+          (keyup.enter)="sendMessage(messageBody)">
+
+      </div>
     </div>
   </div>
 </ng-container>
