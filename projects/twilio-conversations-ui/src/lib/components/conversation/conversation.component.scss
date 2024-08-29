@@ -58,7 +58,7 @@
       .message-info-container {
         display: flex;
         flex-direction: column;
-        margin-left: 8px;
+        margin: 0px 8px;
         max-width: 80%;
 
         .message-author {
@@ -71,11 +71,8 @@
         .message-body {
           display: flex;
           flex-direction: column;
-          background-color: $primary-color;
-          color: $text-color-light;
           padding: 15px;
           border-radius: 15px;
-          border-top-left-radius: 0px;
           margin: 0px;
           display: flex;
           flex-direction: column;
@@ -86,13 +83,16 @@
 
           .message-date {
             align-self: flex-end;
-            margin-top: 10px;
             font-size: 12px;
           }
         }
 
       }
     }
+  }
+
+  .input-container {
+    border-top: solid 1px #f6f6f6;
   }
 }
 
