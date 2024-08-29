@@ -1,102 +1,87 @@
 @import '../../../assets/styles';
 
 :host {
-  height        : 100%;
-  display       : flex;
+  height: 100%;
+  display: flex;
   flex-direction: column;
 }
 
 .container {
-  font-family    : "Roboto", sans-serif;
-  display        : flex;
-  flex-direction : column;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  color          : $text-color-dark;
-  width          : 700px;
-  height         : 100%;
+  color: $text-color-dark;
+  width: 700px;
+  height: 100%;
 
   ul {
     list-style-type: none;
-    overflow-y     : auto;
+    overflow-y: auto;
 
     .message-item {
-      display       : flex;
+      display: flex;
       flex-direction: row;
-      margin        : 15px 0px;
+      margin: 15px 0px;
 
       .participant-avatar {
-        align-self : baseline;
+        align-self: baseline;
         flex-shrink: 0;
 
         img {
-          height    : 40px;
-          width     : 40px;
-          clip-path : circle(50%);
+          height: 40px;
+          width: 40px;
+          clip-path: circle(50%);
           object-fit: cover;
         }
       }
 
       .message-info-container {
-        display       : flex;
+        display: flex;
         flex-direction: column;
-        margin-left   : 8px;
-        width         : 80%;
+        margin-left: 8px;
+        width: 80%;
 
         .message-author {
-          margin   : 0px 0px 3px 0px;
-          color    : $secondary-text-color-dark;
+          margin: 0px 0px 3px 0px;
+          color: $secondary-text-color-dark;
           font-size: 14px;
         }
 
         .message-body {
-          display               : flex;
-          flex-direction        : column;
-          background-color      : $primary-color;
-          color                 : $text-color-light;
-          padding               : 15px;
-          border-radius         : 15px;
+          display: flex;
+          flex-direction: column;
+          background-color: $primary-color;
+          color: $text-color-light;
+          padding: 15px;
+          border-radius: 15px;
           border-top-left-radius: 0px;
-          margin                : 0px;
+          margin: 0px;
 
 
           .message-date {
             align-self: flex-end;
             margin-top: 10px;
-            font-size : 12px;
+            font-size: 12px;
           }
         }
 
       }
     }
   }
-
-  .message-input-container {
-    display         : flex;
-    padding         : 10px;
-    background-color: #f1f1f1;
-
-    .message-input {
-      width        : 100%;
-      padding      : 10px;
-      border       : none;
-      border-radius: 15px;
-      //font-size: 16px;
-    }
-
-  }
 }
 
 .empty-conversation {
-  display        : flex;
+  display: flex;
   justify-content: center;
-  align-items    : center;
-  height         : 100%;
-  width          : 100%;
-  text-align     : center;
-  width          : 700px;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  width: 700px;
 
   h2 {
-    margin    : 0;
+    margin: 0;
     text-align: center;
   }
 }
