@@ -18,11 +18,31 @@
   ul {
     list-style-type: none;
     overflow-y: auto;
+    background-color: $tertiary-color;
 
     .message-item {
       display: flex;
-      flex-direction: row;
       margin: 15px 0px;
+
+      &.right {
+        flex-direction: row-reverse;
+
+        .message-body {
+          border-top-right-radius: 0px !important;
+          background-color: $primary-color;
+          color: $text-color-light;
+        }
+      }
+
+      &.left {
+        flex-direction: row;
+
+        .message-body {
+          border-top-left-radius: 0px !important;
+          background-color: $secondary-color;
+          color: $text-color-dark;
+        }
+      }
 
       .participant-avatar {
         align-self: baseline;
@@ -39,29 +59,26 @@
       .message-info-container {
         display: flex;
         flex-direction: column;
-        margin-left: 8px;
+        margin: 0px 8px;
         width: 80%;
 
         .message-author {
           margin: 0px 0px 3px 0px;
           color: $secondary-text-color-dark;
           font-size: 14px;
+          font-weight: normal;
         }
 
         .message-body {
           display: flex;
           flex-direction: column;
-          background-color: $primary-color;
-          color: $text-color-light;
           padding: 15px;
           border-radius: 15px;
-          border-top-left-radius: 0px;
           margin: 0px;
 
 
           .message-date {
             align-self: flex-end;
-            margin-top: 10px;
             font-size: 12px;
           }
         }
