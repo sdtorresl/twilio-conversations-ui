@@ -32,5 +32,25 @@ export class ConversationComponent implements OnInit {
         // Handle the error, possibly by showing an error message in the UI
       },
     });
+
+    this.twilioConversationsService.getActiveConversationMessages().subscribe({
+      next: (messages) => {
+        if (messages) {
+          this.messages = messages;
+        }
+      },
+      error: (error) => {
+        console.error(error);
+        // Handle the error, possibly by showing an error message in the UI
+      },
+    });
+  }
+
+  sendMessage(inputElement: HTMLInputElement): void {
+    const message = inputElement.value.trim();
+    if (message && this.conversation) {
+      this.twilioConversationsService.sendMessage(message);
+      inputElement.value = ''; // Clear the input text
+    }
   }
 }

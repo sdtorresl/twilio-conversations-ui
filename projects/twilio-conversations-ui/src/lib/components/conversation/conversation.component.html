@@ -21,7 +21,7 @@
       </li>
     </ul>
     <div class="input-container">
-      <input type="text" placeholder="" class="message-input">
+      <input #messageBody type="text" placeholder="" class="message-input" (keyup.enter)="sendMessage(messageBody)">
     </div>
   </div>
 </ng-container>

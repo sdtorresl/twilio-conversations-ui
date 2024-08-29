@@ -21,7 +21,7 @@ export class TwilioConversationsService {
   private activeConversationMessages: BehaviorSubject<Message[] | null> =
     new BehaviorSubject<Message[] | null>(null);
 
-  constructor(private tokenService: TokenService) { }
+  constructor(private tokenService: TokenService) {}
 
   async initializeClient(tokenUrl: string): Promise<void> {
     this.tokenService.getToken(tokenUrl).subscribe({
@@ -62,14 +62,16 @@ export class TwilioConversationsService {
   }
 
   async setActiveConversation(conversation: Conversation): Promise<void> {
+    if (this.activeConversation.value) {
+      this.activeConversation.value.removeAllListeners();
+    }
+
     this.activeConversation.next(conversation);
     var messages = await this.activeConversation.value?.getMessages();
     this.activeConversationMessages.next(messages?.items ?? []);
 
     conversation.on('messageAdded', (message) => {
-      var currentMessages = this.activeConversationMessages.value ?? [];
-      currentMessages.push(message);
-      this.activeConversationMessages.next(currentMessages);
+      this.onMessageAdded(message);
     });
 
     conversation.on('messageRemoved', (message) => {
@@ -80,4 +82,17 @@ export class TwilioConversationsService {
     });
   }
 
+  private onMessageAdded(message: Message) {
+    var currentMessages = this.activeConversationMessages.value ?? [];
+    currentMessages.push(message);
+    this.activeConversationMessages.next(currentMessages);
+  }
+
+  getActiveConversationMessages(): Observable<Message[] | null> {
+    return this.activeConversationMessages.asObservable();
+  }
+
+  sendMessage(messageBody: string): void {
+    this.activeConversation.value?.sendMessage(messageBody);
+  }
 }
