@@ -22,7 +22,7 @@ export class TwilioConversationsService {
   private activeConversationMessages: BehaviorSubject<Message[] | null> =
     new BehaviorSubject<Message[] | null>(null);
 
-  constructor(private tokenService: TokenService) { }
+  constructor(private tokenService: TokenService) {}
 
   async initializeClient(tokenUrl: string): Promise<void> {
     this.tokenService.getToken(tokenUrl).subscribe({
@@ -99,5 +99,14 @@ export class TwilioConversationsService {
 
   getUser(): User | undefined {
     return this.conversationsClient?.user;
+  }
+
+  createConversastion(friendlyName: string): void {
+    this.conversationsClient
+      ?.createConversation({ friendlyName })
+      .then((conversation) => {
+        this.updateConversations();
+        this.setActiveConversation(conversation);
+      });
   }
 }
