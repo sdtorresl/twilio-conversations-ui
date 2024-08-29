@@ -1,0 +1,165 @@
+@import 'variables';
+
+
+/* Basic Reset */
+* {
+  margin    : 0;
+  padding   : 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height     : 100%;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color          : inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height   : auto;
+}
+
+/* iOS Style Input Styles */
+/* styles.scss */
+.input-field {
+  position     : relative;
+  margin-bottom: 1.5rem;
+
+  input {
+    font-size       : 1rem;
+    padding         : 0.75rem;
+    display         : block;
+    width           : 100%;
+    border          : 1px solid #ccc;
+    border-radius   : 10px;
+    background-color: #f9f9f9;
+    transition      : border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+      outline     : none;
+      border-color: #007aff;
+      box-shadow  : 0 0 5px rgba(0, 122, 255, 0.5);
+    }
+
+    &:focus~label,
+    &:not(:placeholder-shown)~label {
+      color: #007aff;
+    }
+  }
+
+  label {
+    position      : absolute;
+    top           : -1.5rem;
+    left          : 0;
+    font-size     : 0.875rem;
+    color         : #999;
+    pointer-events: none;
+    transition    : 0.2s ease all;
+  }
+}
+
+/* Grid System */
+.container {
+  width       : 100%;
+  margin-right: auto;
+  margin-left : auto;
+}
+
+.row {
+  display     : flex;
+  flex-wrap   : wrap;
+  margin-right: -15px;
+  margin-left : -15px;
+}
+
+.col {
+  flex         : 1;
+  padding-right: 15px;
+  padding-left : 15px;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex     : 0 0 percentage($i / 12);
+    max-width: percentage($i / 12);
+  }
+}
+
+/* Padding Utility Classes */
+@for $i from 0 through 12 {
+  .p-#{$i} {
+    padding: $i * 0.25rem;
+  }
+
+  .pt-#{$i} {
+    padding-top: $i * 0.25rem;
+  }
+
+  .pr-#{$i} {
+    padding-right: $i * 0.25rem;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: $i * 0.25rem;
+  }
+
+  .pl-#{$i} {
+    padding-left: $i * 0.25rem;
+  }
+
+  .px-#{$i} {
+    padding-left : $i * 0.25rem;
+    padding-right: $i * 0.25rem;
+  }
+
+  .py-#{$i} {
+    padding-top   : $i * 0.25rem;
+    padding-bottom: $i * 0.25rem;
+  }
+}
+
+/* Margin Utility Classes */
+@for $i from 0 through 12 {
+  .m-#{$i} {
+    margin: $i * 0.25rem;
+  }
+
+  .mt-#{$i} {
+    margin-top: $i * 0.25rem;
+  }
+
+  .mr-#{$i} {
+    margin-right: $i * 0.25rem;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: $i * 0.25rem;
+  }
+
+  .ml-#{$i} {
+    margin-left: $i * 0.25rem;
+  }
+
+  .mx-#{$i} {
+    margin-left : $i * 0.25rem;
+    margin-right: $i * 0.25rem;
+  }
+
+  .my-#{$i} {
+    margin-top   : $i * 0.25rem;
+    margin-bottom: $i * 0.25rem;
+  }
+}

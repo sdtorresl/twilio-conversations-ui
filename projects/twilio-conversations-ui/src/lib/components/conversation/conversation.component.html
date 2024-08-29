@@ -1,24 +1,32 @@
-<div class="container">
-  <ul>
-    <li *ngFor="let message of messages" class="message-item">
-      <div class="participant-avatar">
-        <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
-          alt="conversation-img">
-      </div>
-      <div class="message-info-container">
-        <h3 class="message-author">
-          {{message.author}}
-        </h3>
-        <p class="message-body">
-          {{message.body}}
-          <time class="message-date">
-            {{message.dateCreated | dateFormat}}
-          </time>
-        </p>
-      </div>
-    </li>
-  </ul>
-  <div class="message-input-container">
-    <input type="text" placeholder="" class="message-input">
+<ng-container *ngIf="conversation; else emptyConvo">
+
+  <div class="container">
+    <ul class="px-5">
+      <li *ngFor="let message of messages" class="message-item">
+        <div class="participant-avatar">
+          <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
+            alt="conversation-img">
+        </div>
+        <div class="message-info-container">
+          <h3 class="message-author">
+            {{message.author}}
+          </h3>
+          <p class="message-body">
+            {{message.body}}
+            <time class="message-date">
+              {{message.dateCreated | dateFormat}}
+            </time>
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div class="message-input-container">
+      <input type="text" placeholder="" class="message-input">
+    </div>
   </div>
-</div>
+</ng-container>
+<ng-template #emptyConvo>
+  <div class="empty-conversation">
+    <h2>No conversation selected</h2>
+  </div>
+</ng-template>
