@@ -2,7 +2,8 @@
 
   <div class="container">
     <ul class="px-5">
-      <li *ngFor="let message of messages" class="message-item left">
+      <li *ngFor="let message of messages"
+        [ngClass]="{'message-item': true, 'left': !isAuthor(message), 'right': isAuthor(message)}">
         <div class="participant-avatar">
           <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
             alt="conversation-img">
