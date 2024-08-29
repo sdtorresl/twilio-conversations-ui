@@ -12,12 +12,12 @@
   flex-direction: column;
   justify-content: space-between;
   color: $text-color-dark;
+  background-color: $tertiary-color;
   height: 100vh;
 
   ul {
     list-style-type: none;
     overflow-y: auto;
-    background-color: $tertiary-color;
 
     .message-item {
       display: flex;
