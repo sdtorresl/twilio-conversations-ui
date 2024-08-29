@@ -108,6 +108,9 @@ export class TwilioConversationsService {
         conversation.join();
         this.updateConversations();
         this.setActiveConversation(conversation);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
 }
