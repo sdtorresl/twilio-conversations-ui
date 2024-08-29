@@ -9,8 +9,9 @@
   </form>
 
   <menu class="container">
-    <ul *ngFor="let displayConversation of filteredConversations">
-      <li class="conversation-item" (click)="selectConversation(displayConversation.conversation)"
+    <ul>
+      <li *ngFor="let displayConversation of filteredConversations" class="conversation-item"
+        (click)="selectConversation(displayConversation.conversation)"
         (keydown)="selectConversation(displayConversation.conversation)"
         (keyup)="selectConversation(displayConversation.conversation)"
         (keypress)="selectConversation(displayConversation.conversation)">
