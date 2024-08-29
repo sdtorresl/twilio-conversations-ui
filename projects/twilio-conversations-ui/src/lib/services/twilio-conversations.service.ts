@@ -105,6 +105,7 @@ export class TwilioConversationsService {
     this.conversationsClient
       ?.createConversation({ friendlyName })
       .then((conversation) => {
+        conversation.join();
         this.updateConversations();
         this.setActiveConversation(conversation);
       });
