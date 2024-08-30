@@ -21,24 +21,28 @@ export class ConversationUi {
       return this.conversation.friendlyName;
     }
 
+    return this.displayParticipants;
+  }
+
+  get displayParticipants(): string {
     const participants: Map<string, Participant> =
       this.conversation._participants;
 
-    let identitiesString = '';
+    let participantsString = '';
 
     participants.forEach((participant: Participant) => {
       if (participant.identity) {
-        identitiesString += `${participant.identity}, `;
+        participantsString += `${participant.identity}, `;
       } else {
-        identitiesString += `${participant.bindings}, `;
+        participantsString += `${participant.bindings}, `;
       }
     });
 
-    if (identitiesString.length > 0) {
-      identitiesString = identitiesString.slice(0, -2);
+    if (participantsString.length > 0) {
+      participantsString = participantsString.slice(0, -2);
     }
 
-    return identitiesString;
+    return participantsString;
   }
 
   async displayLastMessage(): Promise<string | null | undefined> {

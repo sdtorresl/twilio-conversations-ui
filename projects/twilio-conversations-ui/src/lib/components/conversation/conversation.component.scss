@@ -17,6 +17,15 @@
   padding-bottom: 50px;
   background-color: $tertiary-color;
 
+  .conversation-header {
+    border-bottom: solid 1px $secondary-color;
+    padding: 10px 15px;
+
+    .conversation-participants {
+      font-size: 13px;
+    }
+  }
+
   ul {
     list-style-type: none;
     overflow-y: auto;

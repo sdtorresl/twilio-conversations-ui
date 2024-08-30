@@ -1,6 +1,10 @@
 <ng-container *ngIf="conversation; else emptyConvo">
 
   <div class="container">
+    <header class="conversation-header">
+      <h2>{{conversationUi?.displayName}}</h2>
+      <p class="conversation-participants">{{conversationUi?.displayParticipants}}</p>
+    </header>
     <ul class="px-5">
       <li *ngFor="let message of messages"
         [ngClass]="{'message-item': true, 'left': !isAuthor(message), 'right': isAuthor(message)}">

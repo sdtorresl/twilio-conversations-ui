@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TwilioConversationsService } from '../../services/twilio-conversations.service';
-import { Conversation, Message } from '@twilio/conversations';
+import { Conversation, Message, Participant } from '@twilio/conversations';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
+import { ConversationUi } from '../../models/conversation-ui.model';
 
 @Component({
   selector: 'lib-conversation',
@@ -14,9 +15,10 @@ import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 })
 export class ConversationComponent implements OnInit {
   conversation?: Conversation;
+  conversationUi?: ConversationUi;
   messages: Message[] = [];
 
-  constructor(private twilioConversationsService: TwilioConversationsService) {}
+  constructor(private twilioConversationsService: TwilioConversationsService) { }
 
   ngOnInit(): void {
     this.twilioConversationsService.getActiveConversation().subscribe({
@@ -26,6 +28,7 @@ export class ConversationComponent implements OnInit {
           this.conversation.getMessages().then((paginator) => {
             this.messages = paginator.items;
           });
+          this.conversationUi = new ConversationUi(this.conversation);
         }
       },
       error: (error) => {
