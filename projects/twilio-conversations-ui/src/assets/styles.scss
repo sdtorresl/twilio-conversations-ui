@@ -187,6 +187,16 @@ img {
     color: $text-color-light;
     cursor: pointer;
 
+    &.icon-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      width: 35px;
+      padding: 0px;
+      border-radius: 35%;
+    }
+
     &:hover {
       background-color: rgba($primary-color, 0.7);
     }
