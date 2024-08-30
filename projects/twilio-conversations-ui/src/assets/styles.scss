@@ -191,6 +191,9 @@ img {
       background-color: rgba($primary-color, 0.7);
     }
 
+    color : $text-color-light;
+    cursor : pointer;
+
     &.close-button {
       background-color: $tertiary-color;
       color: $text-color-dark;
@@ -198,6 +201,8 @@ img {
       &:hover {
         background-color: rgba($tertiary-color, 0.7);
       }
+
+      color : $text-color-dark;
     }
   }
 }
