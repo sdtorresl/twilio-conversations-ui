@@ -1,12 +1,12 @@
 <div class="container">
-  <h3>Create conversation</h3>
+  <h3>Add participant</h3>
   <form action="">
     <div class="input-container">
-      <label for="friendlyName">Choose a name for your new conversation:</label>
-      <input #friendlyName type="text" id="friendlyName" />
+      <label for="identity">Type the identity of the user that you will add:</label>
+      <input #identity type="text" id="identity" />
     </div>
     <div class="buttons-container">
-      <button type="button" class="button" (click)="createConversation()">
+      <button type="button" class="button" (click)="addParticipant()">
         Create conversation
       </button>
 

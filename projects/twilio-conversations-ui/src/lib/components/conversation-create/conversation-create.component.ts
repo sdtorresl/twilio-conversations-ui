@@ -12,15 +12,18 @@ import { TwilioConversationsService } from '../../services/twilio-conversations.
 export class ConversationCreateComponent {
   @ViewChild('friendlyName') friendlyNameInput!: ElementRef<HTMLInputElement>;
 
-  constructor(private twilioConversationsService: TwilioConversationsService, private modalService: ModalService) { }
-
+  constructor(
+    private twilioConversationsService: TwilioConversationsService,
+    private modalService: ModalService
+  ) {}
 
   createConversation() {
     const friendlyName = this.friendlyNameInput.nativeElement.value;
-    console.log("Name: " + friendlyName);
+    console.log('Name: ' + friendlyName);
     this.twilioConversationsService.createConversastion(friendlyName);
 
     this.friendlyNameInput.nativeElement.value = '';
+    this.modalService.close();
   }
 
   closeModal() {
