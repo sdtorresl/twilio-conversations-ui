@@ -1,9 +1,37 @@
+<ng-template #view>
+  <div class="modal-container">
+    <div class="title">
+      <h2>How to create component dynamically in Angular ?</h2>
+    </div>
+    <div class="content">
+      <p class="current">
+        This is the first method. First method is to use a ViewContainerRef
+        with a Template Ref. You create the view contained within the
+        TemplateRef, then create the modal component and inject the view.
+      </p>
+    </div>
+    <div class="footer">
+      <button (click)="close()">Close</button>
+    </div>
+  </div>
+</ng-template>
+
 <ng-container *ngIf="conversation; else emptyConvo">
 
   <div class="container">
     <header class="conversation-header">
-      <h2>{{conversationUi?.displayName}}</h2>
-      <p class="conversation-participants">{{conversationUi?.displayParticipants}}</p>
+      <div class="container">
+        <div class="col-9">
+
+          <h2>{{conversationUi?.displayName}}</h2>
+          <p class="conversation-participants">{{conversationUi?.displayParticipants}}</p>
+        </div>
+        <div class="col-1">
+          <button (click)="openModalComponent()">Open modal with a component</button>
+          <button (click)="openModalTemplate(view)">Open modal with a template</button>
+        </div>
+      </div>
+
     </header>
     <ul class="px-5">
       <li *ngFor="let message of messages"
