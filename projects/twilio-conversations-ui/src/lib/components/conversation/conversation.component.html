@@ -21,8 +21,9 @@
       <li *ngFor="let message of messages"
         [ngClass]="{'message-item': true, 'left': !isAuthor(message), 'right': isAuthor(message)}">
         <div class="participant-avatar">
-          <img src="https://avatars.abstractapi.com/v1/?api_key=80ff55a185b54997ad44e8b2fc81e175&name=Coquito%20Patas"
-            alt="conversation-img">
+          <img
+            src="https://api.dicebear.com/9.x/thumbs/svg?seed={{message.author}}&rotate=50&scale=70&radius=50&backgroundColor=0a5b83,1c799f,69d2e7,b6e3f4,c0aede,d1d4f9,f1f4dc,f88c49,ffd5dc,ffdfbf"
+            alt="conversation-img" />
         </div>
         <div class="message-info-container">
           <h3 class="message-author">
