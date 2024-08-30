@@ -1,18 +1,16 @@
 @import '../../../assets/styles.scss';
 
 .container {
-    background-color: $secondary-color;
-    padding: 30px;
 
-    .input-container {
-        padding: 10px 0px;
-        border-top: none;
-        border-bottom: none;
-    }
+  .input-container {
+    padding      : 10px 0px;
+    border-top   : none;
+    border-bottom: none;
+    background   : transparent;
+  }
 
-    .buttons-container {
-        margin-top: 5px;
-        justify-content: flex-end;
-    }
-
+  .buttons-container {
+    margin-top     : 5px;
+    justify-content: flex-end;
+  }
 }
