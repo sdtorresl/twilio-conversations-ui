@@ -4,7 +4,8 @@
   "peerDependencies": {
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0",
-    "@twilio/conversations": "^2.6.0"
+    "@twilio/conversations": "^2.6.0",
+    "@ctrl/ngx-emoji-mart": "^9.2.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

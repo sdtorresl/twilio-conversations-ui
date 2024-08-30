@@ -1,46 +1,69 @@
 @import '../../../assets/styles';
 
 :host {
-  height: 100%;
-  display: flex;
+  height        : 100%;
+  display       : flex;
   flex-direction: column;
 }
 
 .container {
-  font-family: $font;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: $text-color-dark;
-  position: relative;
-  height: 100vh;
-  padding-bottom: 50px;
+  font-family     : $font;
+  display         : flex;
+  flex-direction  : column;
+  justify-content : space-between;
+  color           : $text-color-dark;
+  position        : relative;
+  height          : 100vh;
+  padding-bottom  : 50px;
   background-color: $tertiary-color;
 
   .conversation-header {
-    border-bottom: solid 1px $secondary-color;
-    padding: 10px 15px;
+    border-bottom  : solid 1px $secondary-color;
+    padding        : 10px 15px;
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+    justify-content: space-between;
 
     .conversation-participants {
       font-size: 13px;
+    }
+
+    #add-participant {
+      width          : 50px;
+      height         : 50px;
+      margin         : 0 15px;
+      background     : blue;
+      border-radius  : 50px;
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+      color          : white;
+
+      &:hover,
+      button:hover {
+        cursor    : pointer !important;
+        background: $secondary-color;
+      }
+
     }
   }
 
   ul {
     list-style-type: none;
-    overflow-y: auto;
+    overflow-y     : auto;
 
     .message-item {
       display: flex;
-      margin: 15px 0px;
+      margin : 15px 0px;
 
       &.right {
         flex-direction: row-reverse;
 
         .message-body {
           border-top-right-radius: 0px !important;
-          background-color: $primary-color;
-          color: $text-color-light;
+          background-color       : $primary-color;
+          color                  : $text-color-light;
         }
       }
 
@@ -49,52 +72,52 @@
 
         .message-body {
           border-top-left-radius: 0px !important;
-          background-color: $secondary-color;
-          color: $text-color-dark;
+          background-color      : $secondary-color;
+          color                 : $text-color-dark;
         }
       }
 
       .participant-avatar {
-        align-self: baseline;
+        align-self : baseline;
         flex-shrink: 0;
 
         img {
-          height: 40px;
-          width: 40px;
-          clip-path: circle(50%);
+          height    : 40px;
+          width     : 40px;
+          clip-path : circle(50%);
           object-fit: cover;
         }
       }
 
       .message-info-container {
-        display: flex;
+        display       : flex;
         flex-direction: column;
-        margin: 0px 8px;
-        max-width: 80%;
+        margin        : 0px 8px;
+        max-width     : 80%;
 
         .message-author {
-          margin: 0px;
-          color: $secondary-text-color-dark;
-          font-size: 13px;
+          margin     : 0px;
+          color      : $secondary-text-color-dark;
+          font-size  : 13px;
           font-weight: normal;
         }
 
         .message-body {
-          display: flex;
+          display       : flex;
           flex-direction: column;
-          padding: 15px;
-          border-radius: 15px;
-          margin: 0px;
-          display: flex;
+          padding       : 15px;
+          border-radius : 15px;
+          margin        : 0px;
+          display       : flex;
           flex-direction: column;
-          padding: 15px;
-          border-radius: 15px;
-          margin: 0px;
+          padding       : 15px;
+          border-radius : 15px;
+          margin        : 0px;
 
 
           .message-date {
             align-self: flex-end;
-            font-size: 12px;
+            font-size : 12px;
           }
         }
 
@@ -104,30 +127,30 @@
 }
 
 .empty-conversation {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
+  align-items    : center;
+  height         : 100%;
+  width          : 100%;
+  text-align     : center;
 
   h2 {
-    margin: 0;
+    margin    : 0;
     text-align: center;
   }
 }
 
 #message-box {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom  : 0;
+  left    : 0;
+  right   : 0;
 }
 
 button {
-  background: none;
-  padding: 0 10px;
-  border: none;
-  font-size: 2rem;
+  background : none;
+  padding    : 0 10px;
+  border     : none;
+  font-size  : 2rem;
   line-height: 2rem;
 }
