@@ -1,37 +1,21 @@
-<ng-template #view>
-  <div class="modal-container">
-    <div class="title">
-      <h2>How to create component dynamically in Angular ?</h2>
-    </div>
-    <div class="content">
-      <p class="current">
-        This is the first method. First method is to use a ViewContainerRef
-        with a Template Ref. You create the view contained within the
-        TemplateRef, then create the modal component and inject the view.
-      </p>
-    </div>
-    <div class="footer">
-      <button (click)="close()">Close</button>
-    </div>
-  </div>
-</ng-template>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <ng-container *ngIf="conversation; else emptyConvo">
 
   <div class="container">
     <header class="conversation-header">
-      <div class="container">
-        <div class="col-9">
-
-          <h2>{{conversationUi?.displayName}}</h2>
-          <p class="conversation-participants">{{conversationUi?.displayParticipants}}</p>
-        </div>
-        <div class="col-1">
-          <button (click)="openModalComponent()">Open modal with a component</button>
-          <button (click)="openModalTemplate(view)">Open modal with a template</button>
-        </div>
+      <div id="conversation-title">
+        <h2>{{conversationUi?.displayName}}</h2>
+        <p class="conversation-participants">{{conversationUi?.displayParticipants}}</p>
       </div>
-
+      <div id="add-participant">
+        <button (click)="openModalComponent()">
+          <span class="material-symbols-outlined">
+            person_add
+          </span>
+        </button>
+      </div>
     </header>
     <ul class="px-5">
       <li *ngFor="let message of messages"

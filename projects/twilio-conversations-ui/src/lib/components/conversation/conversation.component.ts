@@ -12,7 +12,7 @@ import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { ConversationUi } from '../../models/conversation-ui.model';
 import { ModalService } from '../../services/modal.service';
-import { ConversationsListComponent } from 'twilio-conversations-ui';
+import { ConversationCreateComponent } from '../conversation-create/conversation-create.component';
 
 @Component({
   selector: 'lib-conversation',
@@ -22,9 +22,6 @@ import { ConversationsListComponent } from 'twilio-conversations-ui';
   styleUrl: './conversation.component.scss',
 })
 export class ConversationComponent implements OnInit {
-  @ViewChild('view', { static: true, read: ViewContainerRef })
-  vcr!: ViewContainerRef;
-
   conversation?: Conversation;
   conversationUi?: ConversationUi;
   messages: Message[] = [];
@@ -89,26 +86,8 @@ export class ConversationComponent implements OnInit {
     return user?.identity == message.author;
   }
 
-  openModalTemplate(view: TemplateRef<Element>) {
-    this.modalService.open(this.vcr, view, {
-      animations: {
-        modal: {
-          enter: 'enter-scaling 0.3s ease-out',
-          leave: 'fade-out 0.1s forwards',
-        },
-        overlay: {
-          enter: 'fade-in 0.8s',
-          leave: 'fade-out 0.3s forwards',
-        },
-      },
-      size: {
-        width: '40rem',
-      },
-    });
-  }
-
   openModalComponent() {
-    this.modalService.open(ConversationsListComponent, {
+    this.modalService.open(ConversationCreateComponent, {
       animations: {
         modal: {
           enter: 'enter-scaling 0.3s ease-out',
