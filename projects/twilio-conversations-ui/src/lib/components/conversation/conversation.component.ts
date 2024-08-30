@@ -13,6 +13,7 @@ import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { ConversationUi } from '../../models/conversation-ui.model';
 import { ModalService } from '../../services/modal.service';
 import { ConversationCreateComponent } from '../conversation-create/conversation-create.component';
+import { ParticipantCreateComponent } from '../participant-create/participant-create.component';
 
 @Component({
   selector: 'lib-conversation',
@@ -87,7 +88,7 @@ export class ConversationComponent implements OnInit {
   }
 
   openModalComponent() {
-    this.modalService.open(ConversationCreateComponent, {
+    this.modalService.open(ParticipantCreateComponent, {
       animations: {
         modal: {
           enter: 'enter-scaling 0.3s ease-out',

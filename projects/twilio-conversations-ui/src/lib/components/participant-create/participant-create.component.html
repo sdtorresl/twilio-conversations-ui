@@ -1,0 +1,18 @@
+<div class="container">
+  <h3>Add participant</h3>
+  <form action="">
+    <div class="input-container">
+      <label for="identity">Type the identity of the user that you will add:</label>
+      <input #identity type="text" id="identity" />
+    </div>
+    <div class="buttons-container">
+      <button type="button" class="button" (click)="addParticipant()">
+        Create conversation
+      </button>
+
+      <button type="button" class="button close-button" (click)="closeModal()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

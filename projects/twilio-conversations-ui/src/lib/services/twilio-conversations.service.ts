@@ -8,6 +8,7 @@ import {
   Message,
   Participant,
   User,
+  JSONObject,
 } from '@twilio/conversations';
 
 @Injectable({
@@ -112,5 +113,12 @@ export class TwilioConversationsService {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  async addParticipant(
+    identity: string,
+    attributes?: JSONObject
+  ): Promise<void> {
+    this.activeConversation.value?.add(identity, attributes);
   }
 }
