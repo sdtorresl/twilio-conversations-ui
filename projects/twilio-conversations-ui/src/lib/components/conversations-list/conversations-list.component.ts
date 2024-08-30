@@ -4,7 +4,8 @@ import { TwilioConversationsService } from '../../services/twilio-conversations.
 import { Conversation } from '@twilio/conversations';
 import { ConversationUi } from '../../models/conversation-ui.model';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
-import { ConversationCreateComponent } from "../conversation-create/conversation-create.component";
+import { ConversationCreateComponent } from '../conversation-create/conversation-create.component';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'lib-conversations-list',
@@ -17,7 +18,10 @@ export class ConversationsListComponent implements OnInit {
   conversations: ConversationUi[] = [];
   filteredConversations: ConversationUi[] = [];
 
-  constructor(private twilioConversationsService: TwilioConversationsService) { }
+  constructor(
+    private twilioConversationsService: TwilioConversationsService,
+    private modalService: ModalService
+  ) {}
 
   ngOnInit(): void {
     this.twilioConversationsService.getSubscribedConversations().subscribe({
@@ -50,5 +54,23 @@ export class ConversationsListComponent implements OnInit {
     this.filteredConversations = this.conversations.filter((conversationUi) =>
       conversationUi.displayName.toLowerCase().includes(lowerCaseSearchString)
     );
+  }
+
+  openModalComponent() {
+    this.modalService.open(ConversationCreateComponent, {
+      animations: {
+        modal: {
+          enter: 'enter-scaling 0.3s ease-out',
+          leave: 'fade-out 0.1s forwards',
+        },
+        overlay: {
+          enter: 'fade-in 1s',
+          leave: 'fade-out 0.3s forwards',
+        },
+      },
+      size: {
+        width: '40rem',
+      },
+    });
   }
 }
