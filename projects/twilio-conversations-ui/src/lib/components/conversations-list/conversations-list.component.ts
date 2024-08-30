@@ -4,11 +4,12 @@ import { TwilioConversationsService } from '../../services/twilio-conversations.
 import { Conversation } from '@twilio/conversations';
 import { ConversationUi } from '../../models/conversation-ui.model';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
+import { ConversationCreateComponent } from "../conversation-create/conversation-create.component";
 
 @Component({
   selector: 'lib-conversations-list',
   standalone: true,
-  imports: [NgFor, DateFormatPipe],
+  imports: [NgFor, DateFormatPipe, ConversationCreateComponent],
   templateUrl: './conversations-list.component.html',
   styleUrl: './conversations-list.component.scss',
 })
@@ -16,7 +17,7 @@ export class ConversationsListComponent implements OnInit {
   conversations: ConversationUi[] = [];
   filteredConversations: ConversationUi[] = [];
 
-  constructor(private twilioConversationsService: TwilioConversationsService) {}
+  constructor(private twilioConversationsService: TwilioConversationsService) { }
 
   ngOnInit(): void {
     this.twilioConversationsService.getSubscribedConversations().subscribe({

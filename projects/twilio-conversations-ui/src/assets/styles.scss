@@ -4,9 +4,9 @@
 
 /* Basic Reset */
 * {
-  margin     : 0;
-  padding    : 0;
-  box-sizing : border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: $font
 }
 
@@ -21,7 +21,7 @@ body {
 
 a {
   text-decoration: none;
-  color          : inherit;
+  color: inherit;
 }
 
 ul {
@@ -30,32 +30,32 @@ ul {
 
 img {
   max-width: 100%;
-  height   : auto;
+  height: auto;
 }
 
 /* Grid System */
 .container {
-  width       : 100%;
+  width: 100%;
   margin-right: auto;
-  margin-left : auto;
+  margin-left: auto;
 }
 
 .row {
-  display     : flex;
-  flex-wrap   : wrap;
+  display: flex;
+  flex-wrap: wrap;
   margin-right: -15px;
-  margin-left : -15px;
+  margin-left: -15px;
 }
 
 .col {
-  flex         : 1;
+  flex: 1;
   padding-right: 15px;
-  padding-left : 15px;
+  padding-left: 15px;
 }
 
 @for $i from 1 through 12 {
   .col-#{$i} {
-    flex     : 0 0 #{(calc($i /12) *100) + '%'};
+    flex : 0 0 #{(calc($i /12) *100) + '%'};
     max-width: #{(calc($i /12) *100) + '%'};
   }
 }
@@ -83,12 +83,12 @@ img {
   }
 
   .px-#{$i} {
-    padding-left : $i * 0.25rem;
+    padding-left: $i * 0.25rem;
     padding-right: $i * 0.25rem;
   }
 
   .py-#{$i} {
-    padding-top   : $i * 0.25rem;
+    padding-top: $i * 0.25rem;
     padding-bottom: $i * 0.25rem;
   }
 }
@@ -116,41 +116,45 @@ img {
   }
 
   .mx-#{$i} {
-    margin-left : $i * 0.25rem;
+    margin-left: $i * 0.25rem;
     margin-right: $i * 0.25rem;
   }
 
   .my-#{$i} {
-    margin-top   : $i * 0.25rem;
+    margin-top: $i * 0.25rem;
     margin-bottom: $i * 0.25rem;
   }
 }
 
 /* Input Styles */
 .input-container {
-  display         : flex;
-  position        : relative;
-  padding         : 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
   background-color: $secondary-color;
-  border-top      : solid 1px $tertiary-color;
-  border-bottom   : solid 1px $tertiary-color;
+  border-top: solid 1px $tertiary-color;
+  border-bottom: solid 1px $tertiary-color;
+
+  &.flex-row {
+    flex-direction: row;
+  }
 
 
   input {
-    width           : 100%;
-    padding         : 10px;
-    border          : none;
-    border-radius   : 15px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
     background-color: $tertiary-color;
-    transition      : border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 
     &:focus {
-      outline   : none;
+      outline: none;
       box-shadow: 0 0 2px $primary-color;
     }
 
     &:focus-visible {
-      outline   : none;
+      outline: none;
       box-shadow: 0 0 2px $primary-color;
     }
 
@@ -161,12 +165,30 @@ img {
   }
 
   label {
-    position      : absolute;
-    top           : -1.5rem;
-    left          : 0;
-    font-size     : 0.875rem;
-    color         : $secondary-text-color-dark;
+    font-size: 15px;
+    color: $text-color-dark;
     pointer-events: none;
-    transition    : 0.2s ease all;
+    transition: 0.2s ease all;
+  }
+}
+
+/* Button Styles */
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+
+  .button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: $primary-color;
+    color: $text-color-light;
+    cursor: pointer;
+
+    &.close-button {
+      background-color: $tertiary-color;
+      color: $text-color-dark;
+    }
   }
 }
