@@ -55,7 +55,7 @@
     </ul>
     <div id="message-box">
       <emoji-mart *ngIf="showEmojiPicker" (emojiClick)="addEmoji($event, messageBody)"></emoji-mart>
-      <div class="input-container">
+      <div class="input-container flex-row">
         <button (click)="toggleEmojiPicker()">😊</button>
         <input #messageBody type="text" placeholder="Write a message..." class="message-input"
           (keyup.enter)="sendMessage(messageBody)">
