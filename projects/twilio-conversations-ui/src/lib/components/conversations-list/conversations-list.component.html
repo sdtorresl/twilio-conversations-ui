@@ -25,7 +25,8 @@
         (click)="selectConversation(displayConversation.conversation)"
         (keydown)="selectConversation(displayConversation.conversation)"
         (keyup)="selectConversation(displayConversation.conversation)"
-        (keypress)="selectConversation(displayConversation.conversation)">
+        (keypress)="selectConversation(displayConversation.conversation)"
+        [class.selected]="displayConversation.conversation.sid === selectedConversationSid">
         <div class="conversation-img">
           <img
             src='https://api.dicebear.com/9.x/initials/svg?seed={{displayConversation.displayName}}&backgroundColor=29e051,619eff,b6e3f4,c0aede,d1d4f9,ffa6e6,ffd5dc,ffdfbf'

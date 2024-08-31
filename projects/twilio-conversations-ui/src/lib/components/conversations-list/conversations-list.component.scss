@@ -24,6 +24,10 @@
             cursor: pointer;
         }
 
+        &.selected {
+            background-color: rgba($primary-color, 0.15);
+        }
+
         .conversation-img {
             display: flex;
             flex-direction: column;

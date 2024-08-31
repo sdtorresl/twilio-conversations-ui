@@ -17,11 +17,12 @@ import { ModalService } from '../../services/modal.service';
 export class ConversationsListComponent implements OnInit {
   conversations: ConversationUi[] = [];
   filteredConversations: ConversationUi[] = [];
+  selectedConversationSid: string | null = null;
 
   constructor(
     private twilioConversationsService: TwilioConversationsService,
     private modalService: ModalService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.twilioConversationsService.getSubscribedConversations().subscribe({
@@ -46,6 +47,7 @@ export class ConversationsListComponent implements OnInit {
 
   selectConversation(conversation: Conversation): void {
     console.log('Selected conversation:', conversation.sid);
+    this.selectedConversationSid = conversation.sid;
     this.twilioConversationsService.setActiveConversation(conversation);
   }
 
