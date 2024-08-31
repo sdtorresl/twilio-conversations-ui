@@ -8,7 +8,7 @@ import { identity } from 'rxjs';
   standalone: true,
   imports: [],
   templateUrl: './participant-create.component.html',
-  styleUrl: './participant-create.component.css',
+  styleUrl: './participant-create.component.scss',
 })
 export class ParticipantCreateComponent {
   @ViewChild('identity') identityInput!: ElementRef<HTMLInputElement>;

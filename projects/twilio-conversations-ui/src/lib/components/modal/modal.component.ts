@@ -14,7 +14,7 @@ import { Options } from '../../models/options.model';
   standalone: true,
   imports: [],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css',
+  styleUrl: './modal.component.scss',
 })
 export class ModalComponent implements AfterViewInit {
   @ViewChild('modal') modal!: ElementRef<HTMLDivElement>;

@@ -9,6 +9,6 @@
     "@ctrl/ngx-emoji-mart"
   ],
   "assets": [
-    "src/assets"
+    "./src/assets/styles.scss"
   ]
 }
